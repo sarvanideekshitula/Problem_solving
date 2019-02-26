@@ -17,8 +17,28 @@ int main() {
 			right++;
 		}
 	}
-	for(ll i=0;i<v.size();i++){
-		cout << v[i] << endl;
+	for(ll i=0;i<s.length()-1;i++){
+		left = i;
+		right = i+1;
+		while(left>=0 && right<s.length()){
+			if(s[left] == s[right]){
+				ll len = (right-left)+1;
+				string s1 = s.substr(left, len);
+				v.push_back(s1);
+			}
+			left--;
+			right++;
+		}
+	}
+	set<string>str;
+	for (ll i=0;i<v.size();i++){
+		if(v[i] != " "){
+			str.insert(v[i]);
+		}
+	}
+	set<string>::iterator it;
+	for (it=str.begin();it!=str.end();it++){
+		cout << *it << endl;
 	}
 	return 0;
 }
